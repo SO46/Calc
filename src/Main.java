@@ -17,13 +17,9 @@ public class Main {
             if (line.contains(k)) {
                 String regex = Pattern.quote(k);
                 String[] words = line.split(regex);
-                if (words.length != 3) {
-                    throw new Exception("wrong type of expression");
-                } else {
-
+                if (words.length == 2) {
                     boolean num1Check = mathOperations.checkArabNumber(words[0].trim());
                     boolean num2Check = mathOperations.checkArabNumber(words[1].trim());
-
                     if (num1Check == num2Check) {
                          if (num1Check) {
                              System.out.println(mathOperations.Calculate(v, words[0].trim(), words[1].trim()));
@@ -36,11 +32,12 @@ public class Main {
                     } else {
                         throw new Exception("different types of numbers");
                     }
-
                     break;
+                } else {
+                    throw new Exception("wrong type of expression");
                 }
             }
+
         }
-        throw new Exception("wrong type of expression");
     }
 }
